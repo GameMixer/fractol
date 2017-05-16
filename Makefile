@@ -6,7 +6,7 @@
 #    By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/28 19:09:15 by gderenzi          #+#    #+#              #
-#    Updated: 2017/05/04 11:08:41 by gderenzi         ###   ########.fr        #
+#    Updated: 2017/05/08 18:28:41 by gderenzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,15 @@ CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra
 CFLAGS		+= -I includes/ -I libft/includes -I mlx/ 
 LDFLAGS		:= -L libft/ -lft -L mlx/ -lmlx -framework OpenGL -framework AppKit
-SRC			= main.c
+SRC			= main.c \
+			  init.c \
+			  fractal.c \
+			  draw.c \
+			  color.c \
+			  key_hook.c \
+			  mouse_hook.c \
+			  util.c \
+			  error.c
 
 OBJ			= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

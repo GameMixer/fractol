@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 11:18:53 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/04 17:07:28 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/16 11:15:18 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@
 # define KEY_DELETE			51
 # define KEY_F_DELETE		117
 # define KEY_ESC			53
-# define KEY_COMMAND		55	
+# define KEY_COMMAND		55
 # define KEY_CAPSLOCK		57
 # define KEY_L_SHIFT		56
 # define KEY_L_ALT			58

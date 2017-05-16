@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 11:10:13 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/04 19:06:15 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/09 17:54:36 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "get_next_line.h"
 # include "colors.h"
 # include "keys.h"
+# include <mlx.h>
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
@@ -29,6 +30,7 @@
 # define ZOOM_AMOUNT 1.1
 
 # define FRACTALS 3
+# define PAL_SIZE 4
 
 # define RANGE_CHECK(x, a, b, min, max) (((b)-(a))*((x)-(min))/((max)-(min)))+a
 
@@ -36,7 +38,35 @@ typedef struct	s_point
 {
 	double		x;
 	double		y;
-}
+}				t_point;
+
+typedef struct	s_rgb
+{
+	int			r;
+	int			g;
+	int			b;
+}				t_rgb;
+
+typedef struct	s_hsl
+{
+	int			h;
+	double		s;
+	double		l;
+}				t_hsl;
+
+typedef struct	s_palette
+{
+	int			color_0;
+	int			color_1;
+	int			color_2;
+	int			color_3;
+	int			color_4;
+	int			color_5;
+	int			color_6;
+	int			color_7;
+	int			color_8;
+	int			color_9;
+}				t_palette;
 
 typedef struct	s_complex
 {
@@ -74,6 +104,8 @@ typedef struct	s_window
 	int			win_h;
 	t_fract		*fract_ptr;
 	t_fract		*fract_arr;
+	t_palette	*palette;
+	int			pnum;
 }				t_win;
 
 /*
@@ -81,13 +113,14 @@ typedef struct	s_window
 **		util.c
 */
 void			draw_win(char *title, t_win *pic);
-void			draw_reload(t_win *pic);
+int				draw_reload(t_win *pic);
 
 /*
 **	Initialize structures
 **		init.c
 */
 void			init_fract(t_win *pic);
+void			init_palette(t_win *pic);
 
 /*
 **	Handles the fractal
@@ -96,6 +129,7 @@ void			init_fract(t_win *pic);
 void			fractal_change(char *str, t_win *pic);
 int				fractal_mandelbrot(t_win *pic, t_fract fract, t_point *point);
 int				fractal_julia(t_win *pic, t_fract fract, t_point *point);
+int				fractal_burn_ship(t_win *pic, t_fract fract, t_point *point);
 
 /*
 **	Draw the fractal
@@ -109,8 +143,10 @@ void			draw_point(t_point *point, t_win *pic, int color);
 **	Its gotta be pretty. So color file!
 **		color.c
 */
-void			color_change(int num, t_win *pic);
-int				get_color();
+//void			color_change(int num, t_win *pic);
+int				get_color(int z, t_palette palette);
+int				find_color(int z, int c1, int c2, double min);
+int				color_rgb(int r, int g, int b);
 
 /*
 **	Controls for the keyboard

@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 15:14:32 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/04 15:29:47 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/08 18:36:42 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	draw_fractal(t_win *pic, t_fract *fractal,
 	while (point.y < pic->win_h)
 	{
 		point.x = 0;
-		while (point.x < pic<win_w)
+		while (point.x < pic->win_w)
 		{
 			color = (*f)(pic, *fractal, &point);
 			draw_point(&(point), pic, color);
