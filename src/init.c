@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:16:57 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/09 17:19:32 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/16 12:52:03 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ void	init_palette(t_win *pic)
 {
 	if (!(pic->palette = (t_palette *)malloc(sizeof(t_palette) * PAL_SIZE)))
 		fract_error_malloc();
-//	pic->palette[0] = (t_palette){RED, ORANGERED2, GOLD3, CHARTREUSE2,
-//		LIMEGREEN, EMERALDGREEN, SPRINGGREEN2, TEAL, COBALT, BLUE};
 	pic->palette[0] = (t_palette){BLACK, RED, 0xBF3F00, OLIVE,
 		0x3FBF00, GREEN, 0x00BF3F, TEAL, 0x003FBF, BLUE};
 	pic->palette[1] = (t_palette){BLACK, GRAY87, GRAY80, GRAY73,
 		GRAY67, GRAY60, GRAY53, GRAY47, GRAY40, GRAY33};
-	pic->palette[2] = (t_palette){SEPIA, MAROON, FIREBRICK, INDIANRED,
+	pic->palette[2] = (t_palette){RED, MAROON, FIREBRICK, INDIANRED,
 		CRIMSON, RED, ORANGERED, ORANGE, GOLDENROD1, YELLOW};
 	pic->palette[3] = (t_palette){IVORYBLACK, NAVY, COBALT, ROYALBLUE,
 		CORNFLOWERBLUE, STEELBLUE1, SKYBLUE, CADETBLUE1, LITBLUE1, AZURE};

@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 11:15:44 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/09 14:48:12 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/16 11:51:23 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	fract_check_params(int argc, char **argv)
 		if (ft_strcmp("mandelbrot", argv[i]) != 0 &&
 				ft_strcmp("julia", argv[i]) != 0 &&
 				ft_strcmp("burning ship", argv[i]) != 0)
-			fract_error_usage("usage: fractol [mandelbrot, julia, burning ship]\n");
+			fract_error_usage(
+					"usage: fractol [mandelbrot, julia, burning ship]\n");
 		i--;
 	}
 }
@@ -49,26 +50,3 @@ int		main(int argc, char **argv)
 	mlx_loop(pic->mlx);
 	return (0);
 }
-
-/*
-int		main(int argc, char **argv)
-{
-	t_win	**pic;
-	int		i;
-
-	fract_check_params(argc, argv);
-	if (!(pic = (t_win **)malloc(sizeof(t_win *) * argc)))
-		fract_error_malloc();
-	i = 0;
-	while (i < argc)
-	{
-		if (!(pic[i] = (t_win *)malloc(sizeof(t_win))))
-			fract_error_malloc();
-		pic[i]->win_w = WIN_W;
-		pic[i]->win_h = WIN_H;
-		draw_win(ft_strjoin("42 Fractol", ft_itoa(i + 1)), pic[i]);
-		i++;
-	}
-	return (0);
-}
-*/

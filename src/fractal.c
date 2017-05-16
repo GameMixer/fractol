@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 15:02:48 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/09 17:56:14 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/16 12:52:43 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ int		fractal_mandelbrot(t_win *pic, t_fract fract, t_point *point)
 		(fract.iter)++;
 	}
 	if (fract.iter == fract.max)
-		return (get_color(100, pic->palette[pic->pnum]));
-	return (get_color((fract.iter * fract.iter) * 0.1,
-				pic->palette[pic->pnum]));
+		return (pic->palette[pic->pnum].color_0);
+	return (get_color(fract.iter, fract.max, pic));
 }
 
 int		fractal_julia(t_win *pic, t_fract fract, t_point *point)
@@ -57,9 +56,8 @@ int		fractal_julia(t_win *pic, t_fract fract, t_point *point)
 		(fract.iter)++;
 	}
 	if (fract.iter == fract.max)
-		return (get_color(100, pic->palette[pic->pnum]));
-	return (get_color((fract.iter * fract.iter) * 0.1,
-				pic->palette[pic->pnum]));
+		return (pic->palette[pic->pnum].color_0);
+	return (get_color(fract.iter, fract.max, pic));
 }
 
 int		fractal_burn_ship(t_win *pic, t_fract fract, t_point *point)
@@ -77,7 +75,6 @@ int		fractal_burn_ship(t_win *pic, t_fract fract, t_point *point)
 		(fract.iter)++;
 	}
 	if (fract.iter == fract.max)
-		return (color_rgb(fract.iter * 255 / fract.max, 10, 0));
-	return (color_rgb(fract.iter * 255 / fract.max,
-				fract.iter * 255 / (fract.max * 2), 0));
+		return (pic->palette[pic->pnum].color_0);
+	return (get_color(fract.iter, fract.max, pic));
 }

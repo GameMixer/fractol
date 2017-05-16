@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 11:10:13 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/09 17:54:36 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/16 13:03:05 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,9 +143,7 @@ void			draw_point(t_point *point, t_win *pic, int color);
 **	Its gotta be pretty. So color file!
 **		color.c
 */
-//void			color_change(int num, t_win *pic);
-int				get_color(int z, t_palette palette);
-int				find_color(int z, int c1, int c2, double min);
+int				get_color(int i, int m, t_win *pic);
 int				color_rgb(int r, int g, int b);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 15:31:36 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/09 17:23:05 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/16 11:24:39 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int		key_hook(int keycode, t_win *pic)
 	if (keycode == KEY_ESC)
 	{
 		mlx_destroy_window(pic->mlx, pic->win);
-		exit (0);
+		exit(0);
 	}
 	key_hook_color(keycode, pic);
 	key_hook_fractal(keycode, pic);
