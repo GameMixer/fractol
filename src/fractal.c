@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 15:02:48 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/16 12:52:43 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/16 18:15:57 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ void	fractal_change(char *str, t_win *pic)
 
 int		fractal_mandelbrot(t_win *pic, t_fract fract, t_point *point)
 {
-	fract.c.r = 1.0 * (point->x - pic->win_w / 2) /
-		(0.5 * fract.scale * pic->win_w) + fract.x1;
-	fract.c.i = (point->y - pic->win_h / 2) /
-		(0.5 * fract.scale * pic->win_h) + fract.y1;
+	fract.c = num_to_complex(point->x, point->y, fract, pic);
+	//fract.c.r = 1.0 * (point->x - pic->win_w / 2) /
+	//	(0.5 * fract.scale * pic->win_w) + fract.x1;
+	//fract.c.i = (point->y - pic->win_h / 2) /
+	//	(0.5 * fract.scale * pic->win_h) + fract.y1;
 	while ((fract.z.r * fract.z.r + fract.z.i * fract.z.i) < 4 &&
 			fract.iter < fract.max)
 	{
@@ -38,15 +39,16 @@ int		fractal_mandelbrot(t_win *pic, t_fract fract, t_point *point)
 	}
 	if (fract.iter == fract.max)
 		return (pic->palette[pic->pnum].color_0);
-	return (get_color(fract.iter, fract.max, pic));
+	return (color_smooth(fract.z, fract, pic));
 }
 
 int		fractal_julia(t_win *pic, t_fract fract, t_point *point)
 {
-	fract.z.r = 1.0 * (point->x - pic->win_w / 2) /
-		(0.5 * fract.scale * pic->win_w) + fract.x1;
-	fract.z.i = (point->y - pic->win_h / 2) /
-		(0.5 * fract.scale * pic->win_h) + fract.y1;
+	fract.z = num_to_complex(point->x, point->y, fract, pic);
+	//fract.z.r = 1.0 * (point->x - pic->win_w / 2) /
+	//	(0.5 * fract.scale * pic->win_w) + fract.x1;
+	//fract.z.i = (point->y - pic->win_h / 2) /
+	//	(0.5 * fract.scale * pic->win_h) + fract.y1;
 	while ((fract.z.r * fract.z.r + fract.z.i * fract.z.i) < 4 &&
 			fract.iter < fract.max)
 	{
@@ -57,15 +59,16 @@ int		fractal_julia(t_win *pic, t_fract fract, t_point *point)
 	}
 	if (fract.iter == fract.max)
 		return (pic->palette[pic->pnum].color_0);
-	return (get_color(fract.iter, fract.max, pic));
+	return (color_smooth(fract.z, fract, pic));
 }
 
 int		fractal_burn_ship(t_win *pic, t_fract fract, t_point *point)
 {
-	fract.c.r = 1.0 * (point->x - pic->win_w / 2) /
-		(0.5 * fract.scale * pic->win_w) + fract.x1;
-	fract.c.i = (point->y - pic->win_h / 2) /
-		(0.5 * fract.scale * pic->win_h) + fract.y1;
+	fract.c = num_to_complex(point->x, point->y, fract, pic);
+	//fract.c.r = 1.0 * (point->x - pic->win_w / 2) /
+	//	(0.5 * fract.scale * pic->win_w) + fract.x1;
+	//fract.c.i = (point->y - pic->win_h / 2) /
+	//	(0.5 * fract.scale * pic->win_h) + fract.y1;
 	while ((fract.z.r * fract.z.r + fract.z.i * fract.z.i) < 4 &&
 			(fract.iter < fract.max))
 	{
@@ -76,5 +79,5 @@ int		fractal_burn_ship(t_win *pic, t_fract fract, t_point *point)
 	}
 	if (fract.iter == fract.max)
 		return (pic->palette[pic->pnum].color_0);
-	return (get_color(fract.iter, fract.max, pic));
+	return (color_smooth(fract.z, fract, pic));
 }

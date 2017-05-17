@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 11:15:44 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/16 11:51:23 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/16 18:03:38 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		main(int argc, char **argv)
 	init_fract(pic);
 	init_palette(pic);
 	fractal_change(argv[1], pic);
+	adjust_fract(pic->fract_ptr, pic);
 	mlx_expose_hook(pic->win, draw_reload, pic);
 	mlx_mouse_hook(pic->win, mouse_hook, pic);
 	mlx_hook(pic->win, EVENT_KEY_PRESS, EVENT_KEY_MASK, key_hook, pic);

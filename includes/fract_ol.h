@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 11:10:13 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/16 13:03:05 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/16 18:00:43 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ typedef struct	s_fractal
 	double		x2;
 	double		y1;
 	double		y2;
-	double		zoom_x;
-	double		zoom_y;
+	double		offx;
+	double		offy;
 	double		scale;
 	double		tmp;
 	int			iter;
@@ -114,6 +114,8 @@ typedef struct	s_window
 */
 void			draw_win(char *title, t_win *pic);
 int				draw_reload(t_win *pic);
+void			adjust_fract(t_fract *fract, t_win *pic);
+t_complex		num_to_complex(int x, int y, t_fract fract, t_win *pic);
 
 /*
 **	Initialize structures
@@ -143,7 +145,8 @@ void			draw_point(t_point *point, t_win *pic, int color);
 **	Its gotta be pretty. So color file!
 **		color.c
 */
-int				get_color(int i, int m, t_win *pic);
+int				get_color(double i, int m, t_win *pic);
+int				color_smooth(t_complex z, t_fract f, t_win *pic);
 int				color_rgb(int r, int g, int b);
 
 /*

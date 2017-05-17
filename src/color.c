@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 15:53:36 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/16 13:03:34 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/16 17:26:40 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,25 @@ int		color_rgb(int r, int g, int b)
 	return (((r & 0xFF) << 16) + ((g & 0xFF) << 8) + ((b & 0xFF)));
 }
 
-int		get_color(int i, int m, t_win *pic)
+int		color_smooth(t_complex z, t_fract f, t_win *pic)
 {
+	double	i;
+	double	zn;
+	double	nu;
+
+	zn = log(z.r * z.r + z.i * z.i) / 2.0;
+	nu = log(zn / log(2)) / log(2);
+	i = f.iter + 1 - nu;
+	if (i < 0)
+		i = 0;
+	return (get_color(i, f.max, pic));
+}
+
+int		get_color(double i, int max, t_win *pic)
+{
+	double	m;
+
+	m = (double)max;
 	if (i < m)
 	{
 		if (pic->pnum == 0)
