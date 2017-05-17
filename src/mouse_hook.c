@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 16:14:51 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/09 12:12:22 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/17 11:56:38 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		motion_hook(int x, int y, t_win *pic)
 
 int		mouse_hook(int button, int x, int y, t_win *pic)
 {
+	/*
 	if (button == MOUSE_SCROLL_UP || button == MOUSE_CLICK_L ||
 			button == MOUSE_SCROLL_DOWN || button == MOUSE_CLICK_R)
 	{
@@ -42,5 +43,10 @@ int		mouse_hook(int button, int x, int y, t_win *pic)
 		pic->fract_ptr->scale /= ZOOM_AMOUNT;
 	}
 	draw_reload(pic);
+	*/
+	if (button == MOUSE_SCROLL_UP || button == MOUSE_CLICK_L)
+		zoom(x, y, pic, 1.0 / ZOOM_AMOUNT);
+	else if (button == MOUSE_SCROLL_DOWN || button == MOUSE_CLICK_R)
+		zoom(x, y, pic, ZOOM_AMOUNT);
 	return (0);
 }

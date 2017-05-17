@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 11:10:13 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/16 18:00:43 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/17 12:17:47 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@
 # define WIN_W 1920
 # define WIN_H 1080
 
-# define MOVE_DIST 10
+# define MOVE_DIST 0.05
 # define ZOOM_AMOUNT 1.1
 
 # define FRACTALS 3
 # define PAL_SIZE 4
+# define MAX_START 64
 
 # define RANGE_CHECK(x, a, b, min, max) (((b)-(a))*((x)-(min))/((max)-(min)))+a
 
@@ -115,6 +116,7 @@ typedef struct	s_window
 void			draw_win(char *title, t_win *pic);
 int				draw_reload(t_win *pic);
 void			adjust_fract(t_fract *fract, t_win *pic);
+void			zoom(int x, int y, t_win *pic, double s);
 t_complex		num_to_complex(int x, int y, t_fract fract, t_win *pic);
 
 /*

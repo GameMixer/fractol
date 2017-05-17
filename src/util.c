@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 13:30:34 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/16 18:05:13 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/17 11:57:43 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,22 @@ void		adjust_fract(t_fract *fract, t_win *pic)
 		fract->x1 = -(h * pic->win_w / pic->win_h / 2);
 		fract->x2 = h * pic->win_w / pic->win_h / 2;
 	}
+}
+
+void		zoom(int x, int y, t_win *pic, double s)
+{
+	double	w;
+	double	h;
+	double	nw;
+	double	nh;
+
+	w = (pic->fract_ptr->x2 - pic->fract_ptr->x1) * pic->fract_ptr->scale;
+	h = (pic->fract_ptr->y2 - pic->fract_ptr->y1) * pic->fract_ptr->scale;
+	pic->fract_ptr->scale *= s;
+	nw = (pic->fract_ptr->x2 - pic->fract_ptr->x1) * pic->fract_ptr->scale;
+	nh = (pic->fract_ptr->y2 - pic->fract_ptr->y1) * pic->fract_ptr->scale;
+	pic->fract_ptr->offx -= ((double)x / pic->win_w) * (nw - w);
+	pic->fract_ptr->offy -= ((double)y / pic->win_h) * (nh - h);
 }
 
 t_complex	num_to_complex(int x, int y, t_fract fract, t_win *pic)
