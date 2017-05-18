@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 15:31:36 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/17 12:12:04 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/18 13:40:15 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,11 @@ void	key_hook_fractal(int keycode, t_win *pic)
 	else if (keycode == KEY_KP_2)
 		fractal_change("julia", pic);
 	else if (keycode == KEY_KP_3)
-		fractal_change("burning ship", pic);
+		fractal_change("burning_ship", pic);
 	if (keycode == KEY_KP_MULTI)
 		pic->fract_ptr->max *= 2;
 	else if (keycode == KEY_KP_DIV)
-		if (pic->fract_ptr->max > 1)
+		if (pic->fract_ptr->max > 2)
 			pic->fract_ptr->max /= 2;
 }
 
@@ -127,6 +127,10 @@ int		key_hook(int keycode, t_win *pic)
 		mlx_destroy_window(pic->mlx, pic->win);
 		exit(0);
 	}
+	if (keycode == KEY_H)
+		pic->help = 1 - pic->help;
+	if (keycode == KEY_L)
+		pic->lock = 1 - pic->lock;
 	key_hook_color(keycode, pic);
 	key_hook_fractal(keycode, pic);
 	key_hook_scale(keycode, pic);

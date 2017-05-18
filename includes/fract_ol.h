@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 11:10:13 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/17 12:17:47 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/18 13:50:10 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <math.h>
 # include <stdio.h>
 # include <limits.h>
+# include <pthread.h>
 
 # define WIN_W 1920
 # define WIN_H 1080
@@ -31,6 +32,7 @@
 
 # define FRACTALS 3
 # define PAL_SIZE 4
+# define THREADS 8
 # define MAX_START 64
 
 # define RANGE_CHECK(x, a, b, min, max) (((b)-(a))*((x)-(min))/((max)-(min)))+a
@@ -41,19 +43,19 @@ typedef struct	s_point
 	double		y;
 }				t_point;
 
-typedef struct	s_rgb
-{
-	int			r;
-	int			g;
-	int			b;
-}				t_rgb;
+typedef struct s_window	t_win;
 
-typedef struct	s_hsl
+typedef struct	s_thread
 {
-	int			h;
-	double		s;
-	double		l;
-}				t_hsl;
+	int			id;
+	t_win		*pic;
+}				t_thread;
+
+typedef struct	s_render
+{
+	pthread_t	threads[THREADS];
+	t_thread	args[THREADS];
+}				t_render;
 
 typedef struct	s_palette
 {
@@ -103,10 +105,14 @@ typedef struct	s_window
 	int			endian;
 	int			win_w;
 	int			win_h;
+	int			*data;
 	t_fract		*fract_ptr;
 	t_fract		*fract_arr;
 	t_palette	*palette;
 	int			pnum;
+	t_render	render;
+	int			help;
+	int			lock;
 }				t_win;
 
 /*
@@ -139,8 +145,10 @@ int				fractal_burn_ship(t_win *pic, t_fract fract, t_point *point);
 **	Draw the fractal
 **		draw.c
 */
-void			draw_fractal(t_win *pic, t_fract *fractal, int (*f)(t_win *,
-					t_fract, t_point *));
+void			*draw_thread(void *p);
+void			draw_render(t_win *pic);
+void			draw_fractal(t_win *pic/*, t_fract *fractal, int (*f)(t_win *,
+					t_fract, t_point *)*/);
 void			draw_point(t_point *point, t_win *pic, int color);
 
 /*
@@ -167,6 +175,15 @@ void			key_hook_scale(int keycode, t_win *pic);
 */
 int				mouse_hook(int button, int x, int y, t_win *pic);
 int				motion_hook(int x, int y, t_win *pic);
+
+/*
+**	Displays the controls for users
+**		display.c
+*/
+void			display_info(t_win *pic);
+void			display_controls(t_win *pic, int color);
+char			*display_theme(t_win *pic);
+char			*display_fractal(t_win *pic);
 
 /*
 **	Error display

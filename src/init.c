@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:16:57 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/17 12:17:42 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/18 13:05:37 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	init_fract(t_win *pic)
 	if (!(pic->fract_arr = (t_fract *)malloc(sizeof(t_fract) * FRACTALS)))
 		fract_error_malloc();
 	pic->fract_arr[0] = (t_fract){{0, 0}, {0, 0}, -2, 1, -1, 1,
-		-0.5, 0, 0.5, 0, 0, MAX_START, fractal_mandelbrot};
+		-0.5, 0, 1, 0, 0, MAX_START, fractal_mandelbrot};
 	pic->fract_arr[1] = (t_fract){{0, 0}, {0, 0}, -2, 2, -2, 2,
-		0, 0, 0.5, 0, 0, MAX_START, fractal_julia};
+		0, 0, 1, 0, 0, MAX_START, fractal_julia};
 	pic->fract_arr[2] = (t_fract){{0, 0}, {0, 0}, -2, 1, -2, 1,
-		-0.25, 0, 0.5, 0, 0, MAX_START, fractal_burn_ship};
+		-0.25, 0, 1, 0, 0, MAX_START, fractal_burn_ship};
 	pic->fract_ptr = &(pic->fract_arr[0]);
 }

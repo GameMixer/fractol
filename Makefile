@@ -6,7 +6,7 @@
 #    By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/28 19:09:15 by gderenzi          #+#    #+#              #
-#    Updated: 2017/05/08 18:28:41 by gderenzi         ###   ########.fr        #
+#    Updated: 2017/05/18 12:12:26 by gderenzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC			= main.c \
 			  key_hook.c \
 			  mouse_hook.c \
 			  util.c \
+			  display.c \
 			  error.c
 
 OBJ			= $(addprefix $(OBJDIR),$(SRC:.c=.o))

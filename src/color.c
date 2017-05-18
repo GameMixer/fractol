@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 15:53:36 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/16 17:26:40 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/18 11:44:27 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		get_color(double i, int max, t_win *pic)
 	double	m;
 
 	m = (double)max;
-	if (i < m)
+	if (i <= m)
 	{
 		if (pic->pnum == 0)
 		{
