@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 15:31:36 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/18 13:40:15 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/25 14:23:30 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,6 @@ void	key_hook_scale(int keycode, t_win *pic)
 		zoom(pic->win_w / 2, pic->win_h / 2, pic, 1.0 / ZOOM_AMOUNT);
 	else if (keycode == KEY_KP_MINUS || keycode == KEY_MINUS)
 		zoom(pic->win_w / 2, pic->win_h / 2, pic, ZOOM_AMOUNT);
-	/*
-	double	s;
-
-	if (keycode == KEY_KP_PLUS)
-	{
-		pic->fract_ptr->scale *= ZOOM_AMOUNT;
-		s = pic->fract_ptr->scale;
-		pic->fract_ptr->x1 += ((pic->win_h / 2) / pic->win_w / 2) / s * 10;
-		pic->fract_ptr->x2 += ((pic->win_h / 2) / pic->win_w / 2) / s * 10;
-		pic->fract_ptr->y1 += ((pic->win_w / 2) / pic->win_h / 2) / s * 10;
-		pic->fract_ptr->y2 += ((pic->win_w / 2) / pic->win_h / 2) / s * 10;
-	}
-	else if (keycode == KEY_KP_MINUS)
-	{
-		pic->fract_ptr->scale /= ZOOM_AMOUNT;
-		s = pic->fract_ptr->scale;
-		pic->fract_ptr->x1 += ((pic->win_h / 2) / pic->win_w / 2) / s * 10;
-		pic->fract_ptr->x2 += ((pic->win_h / 2) / pic->win_w / 2) / s * 10;
-		pic->fract_ptr->y1 += ((pic->win_w / 2) / pic->win_h / 2) / s * 10;
-		pic->fract_ptr->y2 += ((pic->win_w / 2) / pic->win_h / 2) / s * 10;
-	}
-	*/
 }
 
 void	key_hook_shift(int keycode, t_win *pic)
@@ -57,38 +35,10 @@ void	key_hook_shift(int keycode, t_win *pic)
 		pic->fract_ptr->offx -= w * MOVE_DIST;
 	else if (keycode == KEY_RIGHT)
 		pic->fract_ptr->offx += w * MOVE_DIST;
-	/*
-	if (keycode == KEY_UP)
-	{
-		pic->fract_ptr->y1 += 10 / (pic->fract_ptr->scale * 20);
-		pic->fract_ptr->y2 += 10 / (pic->fract_ptr->scale * 20);
-	}
-	else if (keycode == KEY_DOWN)
-	{
-		pic->fract_ptr->y1 -= 10 / (pic->fract_ptr->scale * 20);
-		pic->fract_ptr->y2 -= 10 / (pic->fract_ptr->scale * 20);
-	}
-	else if (keycode == KEY_LEFT)
-	{
-		pic->fract_ptr->x1 += 10 / (pic->fract_ptr->scale * 20);
-		pic->fract_ptr->x2 += 10 / (pic->fract_ptr->scale * 20);
-	}
-	else if (keycode == KEY_RIGHT)
-	{
-		pic->fract_ptr->x1 -= 10 / (pic->fract_ptr->scale * 20);
-		pic->fract_ptr->x2 -= 10 / (pic->fract_ptr->scale * 20);
-	}
-	*/
 }
 
 void	key_hook_fractal(int keycode, t_win *pic)
 {
-	if (keycode == KEY_KP_1)
-		fractal_change("mandelbrot", pic);
-	else if (keycode == KEY_KP_2)
-		fractal_change("julia", pic);
-	else if (keycode == KEY_KP_3)
-		fractal_change("burning_ship", pic);
 	if (keycode == KEY_KP_MULTI)
 		pic->fract_ptr->max *= 2;
 	else if (keycode == KEY_KP_DIV)

@@ -6,7 +6,7 @@
 #    By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/28 19:09:15 by gderenzi          #+#    #+#              #
-#    Updated: 2017/05/18 12:12:26 by gderenzi         ###   ########.fr        #
+#    Updated: 2017/05/23 17:22:36 by gderenzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ LDFLAGS		:= -L libft/ -lft -L mlx/ -lmlx -framework OpenGL -framework AppKit
 SRC			= main.c \
 			  init.c \
 			  fractal.c \
+			  fractal2.c \
 			  draw.c \
 			  color.c \
 			  key_hook.c \

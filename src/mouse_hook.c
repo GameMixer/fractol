@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 16:14:51 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/18 12:58:13 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/23 13:16:55 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,6 @@ int		motion_hook(int x, int y, t_win *pic)
 
 int		mouse_hook(int button, int x, int y, t_win *pic)
 {
-	/*
-	if (button == MOUSE_SCROLL_UP || button == MOUSE_CLICK_L ||
-			button == MOUSE_SCROLL_DOWN || button == MOUSE_CLICK_R)
-	{
-		pic->fract_ptr->x1 += (((double)x - pic->win_h / 2) / pic->win_w / 2);
-		pic->fract_ptr->x2 += (((double)x - pic->win_h / 2) / pic->win_w / 2);
-		pic->fract_ptr->y1 += (((double)y - pic->win_w / 2) / pic->win_h / 2);
-		pic->fract_ptr->y2 += (((double)y - pic->win_w / 2) / pic->win_h / 2);
-	}
-	if (button == MOUSE_SCROLL_UP || button == MOUSE_CLICK_L)
-	{
-		pic->fract_ptr->scale *= ZOOM_AMOUNT;
-	}
-	else if (button == MOUSE_SCROLL_DOWN || button == MOUSE_CLICK_R)
-	{
-		pic->fract_ptr->scale /= ZOOM_AMOUNT;
-	}
-	draw_reload(pic);
-	*/
 	if (button == MOUSE_SCROLL_UP || button == MOUSE_CLICK_L)
 	{
 		zoom(x, y, pic, 1.0 / ZOOM_AMOUNT);

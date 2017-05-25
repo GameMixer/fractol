@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:16:57 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/18 13:05:37 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/23 17:45:54 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,9 @@ void	init_fract(t_win *pic)
 		0, 0, 1, 0, 0, MAX_START, fractal_julia};
 	pic->fract_arr[2] = (t_fract){{0, 0}, {0, 0}, -2, 1, -2, 1,
 		-0.25, 0, 1, 0, 0, MAX_START, fractal_burn_ship};
+	pic->fract_arr[3] = (t_fract){{0, 0}, {0, 0}, -2.1, 1.75, -1.2, 1.15,
+		0, 0, 1, 0, 0, MAX_START, fractal_dragon};
+	pic->fract_arr[4] = (t_fract){{0, 0}, {0, 0}, -2.1, 0.6, -1.2, 1.2,
+		0, 0, 1, 0, 0, MAX_START, fractal_tricorn};
 	pic->fract_ptr = &(pic->fract_arr[0]);
 }

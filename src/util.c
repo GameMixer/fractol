@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 13:30:34 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/18 12:03:51 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/23 17:38:03 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		draw_win(char *title, t_win *pic)
 {
 	if (!(pic->mlx = mlx_init()))
-		fract_error_usage("error mlx init.\n");
+		fract_error_mlx();
 	pic->win = mlx_new_window(pic->mlx, pic->win_w, pic->win_h, title);
 	if (!(pic->data = (int *)malloc(sizeof(int) * pic->win_w * pic->win_h)))
 		fract_error_malloc();
@@ -26,7 +26,7 @@ int			draw_reload(t_win *pic)
 	pic->img = mlx_new_image(pic->mlx, pic->win_w, pic->win_h);
 	pic->img_addr = mlx_get_data_addr(pic->img, &(pic->bits),
 			&(pic->size), &(pic->endian));
-	draw_fractal(pic/*, pic->fract_ptr, pic->fract_ptr->func*/);
+	draw_fractal(pic);
 	mlx_put_image_to_window(pic->mlx, pic->win, pic->img, 0, 0);
 	if (pic->help)
 		display_info(pic);

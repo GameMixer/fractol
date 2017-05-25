@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 11:15:44 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/18 13:39:56 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/23 17:36:24 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@ void	fract_check_params(int argc, char **argv)
 	int i;
 
 	if (argc < 2 || argc > 3)
-		fract_error_usage("usage: fractol [mandelbrot, julia, burning_ship]\n");
+		fract_error_usage();
 	i = argc - 1;
 	while (i > 0)
 	{
 		if (ft_strcmp("mandelbrot", argv[i]) != 0 &&
 				ft_strcmp("julia", argv[i]) != 0 &&
-				ft_strcmp("burning_ship", argv[i]) != 0)
-			fract_error_usage(
-					"usage: fractol [mandelbrot, julia, burning_ship]\n");
+				ft_strcmp("burning_ship", argv[i]) != 0 &&
+				ft_strcmp("dragon", argv[i]) != 0 &&
+				ft_strcmp("tricorn", argv[i]) != 0)
+			fract_error_usage();
 		i--;
 	}
 }

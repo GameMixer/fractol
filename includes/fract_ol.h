@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 11:10:13 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/18 13:50:10 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/23 17:36:53 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define MOVE_DIST 0.05
 # define ZOOM_AMOUNT 1.1
 
-# define FRACTALS 3
+# define FRACTALS 5
 # define PAL_SIZE 4
 # define THREADS 8
 # define MAX_START 64
@@ -94,7 +94,7 @@ typedef struct	s_fractal
 	void		*func;
 }				t_fract;
 
-typedef struct	s_window
+struct			s_window
 {
 	void		*mlx;
 	void		*win;
@@ -113,7 +113,7 @@ typedef struct	s_window
 	t_render	render;
 	int			help;
 	int			lock;
-}				t_win;
+};
 
 /*
 **	Tools used for various things...like drawing.
@@ -140,6 +140,8 @@ void			fractal_change(char *str, t_win *pic);
 int				fractal_mandelbrot(t_win *pic, t_fract fract, t_point *point);
 int				fractal_julia(t_win *pic, t_fract fract, t_point *point);
 int				fractal_burn_ship(t_win *pic, t_fract fract, t_point *point);
+int				fractal_dragon(t_win *pic, t_fract fract, t_point *point);
+int				fractal_tricorn(t_win *pic, t_fract fract, t_point *point);
 
 /*
 **	Draw the fractal
@@ -147,8 +149,7 @@ int				fractal_burn_ship(t_win *pic, t_fract fract, t_point *point);
 */
 void			*draw_thread(void *p);
 void			draw_render(t_win *pic);
-void			draw_fractal(t_win *pic/*, t_fract *fractal, int (*f)(t_win *,
-					t_fract, t_point *)*/);
+void			draw_fractal(t_win *pic);
 void			draw_point(t_point *point, t_win *pic, int color);
 
 /*
@@ -190,6 +191,7 @@ char			*display_fractal(t_win *pic);
 **		error.c
 */
 void			fract_error_malloc(void);
-void			fract_error_usage(char *str);
+void			fract_error_usage(void);
+void			fract_error_mlx(void);
 
 #endif

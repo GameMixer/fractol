@@ -6,7 +6,7 @@
 /*   By: gderenzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 11:39:53 by gderenzi          #+#    #+#             */
-/*   Updated: 2017/05/18 13:38:42 by gderenzi         ###   ########.fr       */
+/*   Updated: 2017/05/23 17:31:00 by gderenzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,6 @@ void	display_controls(t_win *pic, int color)
 			"Toggle help (These words up here): H");
 	mlx_string_put(pic->mlx, pic->win, 10, 202, color,
 			"===========================ESC to Quit==========================");
-/*	return ("===========================CONTROLS===========================\n\
-			Move View:\n\
-			    Arror Keys: UP, DOWN, LEFT, RIGHT\n\n \
-			Zoom:\n\
-			    IN:  + or Left Click or Scroll Up\n\
-			    OUT: - or Right Clcik or Scroll Down\n\n\
-			Change Iteration Amount:\n\
-			    Increase: Keypad *\n\
-			    Decrease: Keypad /\n\n\
-			Change Themes:\n\
-			    1: RGB, 2: Black and White, 3: Lava, 4: Winter\n\
-			    NEXT: >\n\
-				PREV: <\n\n\
-			Change Fractals:\n\
-			    Keypad 1: Mandelbrot, Keypad 2: Julia, Keypad 3: Burning ship\n\
-			\nToggle Mouse Lock (For julia): L\
-			\nToggle Help: H\
-			==========================ESC to Quit=========================");*/
 }
 
 char	*display_theme(t_win *pic)
@@ -73,7 +55,11 @@ char	*display_fractal(t_win *pic)
 		return ("mandelbrot");
 	if (pic->fract_ptr == &(pic->fract_arr[1]))
 		return ("julia");
-	return ("burning boat");
+	if (pic->fract_ptr == &(pic->fract_arr[2]))
+		return ("burning ship");
+	if (pic->fract_ptr == &(pic->fract_arr[3]))
+		return ("dragon");
+	return ("tricorn");
 }
 
 void	display_info(t_win *pic)
